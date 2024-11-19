@@ -1,0 +1,30 @@
+/* about.css */
+.about {
+    position: absolute;
+    min-width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+
+    transition: transform 1s ease-in-out;
+    will-change: transform;
+}
+
+.about.intro {
+    background-image: url('/Images/wallpaperTemp-enhance.png'); /* Update with the actual image path */
+    background-size: cover; /* Scale the image to cover the slide */
+    background-position: center; /* Center the image */
+    color: #ffffff; /* Set text color for readability */
+
+    transform: translateY(0);
+}
+
+
+.about.education {
+    transform: translateY(100%);
+}

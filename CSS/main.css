@@ -1,0 +1,206 @@
+/* main.css */
+@font-face {
+    font-family: 'NeoTech';
+    src: url('/fonts/Neo\ Tech.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OsakeBrush';
+    src: url('/fonts/Osake.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #836FFF;
+    --secondary-color: #E1AA74;
+    --accent-color: #F3F0CA;
+    --background-color: #211951;
+    --background-dark: #110d2a;
+    --text-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Prevent scrolling */
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* styles.css */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    background-image: url('/SVG/TopBar.svg'); /* Path to your SVG */
+    background-repeat: no-repeat;
+    background-size: contain; /* Scale to cover the navbar area */
+    background-position: center; /* Center the SVG */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar ul {
+    /* width: 100%; */
+    height: 130px;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar ul li a {
+    color: gray;
+    transition: color 0.3s ease;
+
+    font-size: clamp(0.7rem, 2vw, 1.7rem);
+    text-decoration: none;
+    font-family: 'NeoTech';
+}
+
+/* Hover effect */
+.navbar ul li a:hover {
+    color: var(--secondary-color); /* Change this to your desired hover color */
+}
+
+.navbar ul li a.active {
+    color: white; /* Color for the active (selected) link */
+}
+
+.navbar li{
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.nav-left,
+.nav-center,
+.nav-right {
+    display: flex;
+    align-items: center;
+    padding-inline: clamp(1rem, 3vw, 3rem);
+}
+
+.nav-left li, .nav-center li, .nav-right li {
+    margin: 0 0.5vw;
+}
+
+.nav-center {
+    flex-grow: 1; /* Center section will stay in the middle */
+    justify-content: center;
+}
+
+.nav-center h1 {
+    color: white;
+    font-size: clamp(0.7rem, 3vw, 3rem);
+    text-decoration: none;
+    font-family: 'OsakeBrush';
+    letter-spacing: 0.1rem;
+    margin-top: 0.6vw;
+    margin-inline: 2rem;
+    margin-right: 5vw;
+}
+
+.mainSlide {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.sidebar {
+    width: 15%;
+    height: 100%; /* Sidebar fills viewport height */
+    /* background-color: #333; */
+    color: #fff;
+    padding: 20px;
+    position: absolute; /* Overlay on top of slides */
+    top: 0;
+    left: 0;
+    z-index: 9; /* Ensure sidebar is above slides */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.sidebar ul li:hover {
+    background-color: #555; /* Change color on hover */
+}
+
+.sidebar ul li.active {
+    background-color: #444; /* Active item background color */
+    color: #ffffff; /* Ensure text color stands out */
+}
+
+.slides {
+    flex-grow: 1;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    height: 100%; /* Ensure the slides take full height */
+}
+
+.section.active {
+    opacity: 1;
+}
+
+.section:not(.active){
+    opacity: 0;
+}
+
+.language span {
+    color: gray;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.language span:hover {
+    color: var(--secondary-color);
+}
+
+.language .selected {
+    color: white;
+    font-weight: bold;
+}
+
+
+.vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 200vw 2vw rgba(0, 0, 0, 0.9) inset;
+}

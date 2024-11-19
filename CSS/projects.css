@@ -1,0 +1,47 @@
+/* project.css */
+.projects {
+    position: absolute;
+    min-width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+
+    transition: transform 1s ease-in-out;
+    will-change: transform;
+}
+
+.projects.pro1 {
+    /* background-image: url('/Images/wallpaperTemp-enhance.png');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff; */
+
+    /* transition: transform 1s ease-in-out; */
+    transform: translateY(0);
+}
+
+
+.projects.pro2 {
+    /* background-image: url('/Images/wallpaperTemp-enhance.png');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff; */
+
+    /* transition: transform 1s ease-in-out; */
+    transform: translateY(100%);
+}
+
+.projects.pro3 {
+    /* background-image: url('/Images/wallpaperTemp-enhance.png');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff; */
+
+    /* transition: transform 1s ease-in-out; */
+    transform: translateY(100%);
+}

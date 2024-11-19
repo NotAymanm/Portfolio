@@ -1,0 +1,30 @@
+{
+  "title": "Portfolio de Ayman",
+  "navbar": {
+    "about": "A propos",
+    "work": "Travail",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "slides": {
+    "about": {
+      "intro": "Diapositive d'introduction",
+      "education": "Diapositive d'éducation"
+    },
+    "work": {
+      "experience1": "Diapositive d'expérience 1",
+      "experience2": "Diapositive d'expérience 2",
+      "experience3": "Diapositive d'expérience 3"
+    },
+    "projects": {
+      "project1": "Diapositive de projet 1",
+      "project2": "Diapositive de projet 2",
+      "project3": "Diapositive de projet 3"
+    }
+  },
+  "sidebar": {
+    "about": ["Introduction", "Éducation"],
+    "work": ["Expérience 1", "Expérience 2", "Expérience 3"],
+    "projects": ["Projet 1", "Projet 2", "Projet 3"]
+  }
+}
