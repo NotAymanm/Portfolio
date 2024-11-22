@@ -8,7 +8,7 @@
   },
   "slides": {
     "about": {
-      "intro": "Diapositive d'introduction",
+      "intro": {"hey": "HEY, J'SUIS"},
       "education": "Diapositive d'éducation"
     },
     "work": {

@@ -1,20 +1,11 @@
 /* about.css */
-.about {
+#particles-js {
     position: absolute;
-    min-width: 100%;
+    width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-
-    transition: transform 1s ease-in-out;
-    will-change: transform;
 }
 
+/* INTRO */
 .about.intro {
     background-image: url('/Images/wallpaperTemp-enhance.png'); /* Update with the actual image path */
     background-size: cover; /* Scale the image to cover the slide */
@@ -24,7 +15,40 @@
     transform: translateY(0);
 }
 
+.introText{
+    display: flex;
+    font-size: clamp(0.7rem, 3vw, 3.5rem);
+    text-decoration: none;
+    font-family: 'Bumbu';
+    letter-spacing: 0.3rem;
+    justify-content: center;
+}
 
+.introName{
+    display: flex;
+    font-size: clamp(0.7rem, 6vw, 30rem);
+    text-decoration: none;
+    font-family: 'Bumbu';
+    font-weight: lighter;
+    letter-spacing: 0.3rem;
+    justify-content: center;
+}
+
+.svg-logo{
+    position: absolute;
+    width: clamp(0.7rem, 22vw, 28rem);
+    opacity: 0.3;
+
+    /* allows events to occur over svg */
+    pointer-events: none;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* EDUCATION */
 .about.education {
     transform: translateY(100%);
 }

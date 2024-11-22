@@ -4,6 +4,44 @@ import { handleSectionChange } from './sidebar.js';
 import { navigateSlides } from './slides.js';
 
 export function setupEventListeners() {
+    
+    window.addEventListener('load', () => {
+        const progressBar = document.querySelector('.progress');
+        const images = document.images; // Get all images on the page
+        const totalAssets = images.length;
+        let loadedAssets = 0;
+    
+        if (totalAssets === 0) {
+            // If there are no images, directly complete the loading screen
+            progressBar.style.width = '100%';
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => loadingScreen.style.display = 'none', 500);
+            }, 500); // Delay hiding the loading screen by 0.5 seconds
+            return;
+        }
+    
+        // Track image load events
+        for (let i = 0; i < totalAssets; i++) {
+            const img = images[i];
+            img.onload = img.onerror = () => {
+                loadedAssets++;
+                const progress = (loadedAssets / totalAssets) * 100;
+                progressBar.style.width = progress + '%';
+    
+                if (progress >= 100) {
+                    setTimeout(() => {
+                        const loadingScreen = document.getElementById('loading-screen');
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => loadingScreen.style.display = 'none', 500);
+                    }, 500); // Delay hiding the loading screen by 0.5 seconds
+                }
+            };
+        }
+    });
+    
+
     const languageSelector = document.getElementById('language-selector');
     const en = document.getElementById('en');
     const fr = document.getElementById('fr');

@@ -6,13 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-translate="title">Ayman's Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="/Images/favicon.ico">
     <link rel="stylesheet" href="/CSS/main.css">
     <link rel="stylesheet" href="/CSS/about.css">
     <link rel="stylesheet" href="/CSS/work.css">
     <link rel="stylesheet" href="/CSS/projects.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <!-- <div id="loading-screen">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div> -->
     <div class="main">
+        <div id="fps-counter">FPS: 0</div>
         <nav class="navbar">
             <ul>
                 <!-- Left Section -->
@@ -51,8 +59,38 @@
 
                 <!-- About Slides -->
                 <section id="about" class="section">
-                    <section class="about intro vignette" data-translate="slides.about.intro">Intro Slide</section>
-                    <section class="about education vignette" data-translate="slides.about.education">Education Slide</section>
+                    <section
+                        class="about intro vignette"
+                    >
+                    <div id="particles-js"></div>
+                    <div>
+                        <div class="introText" data-delay="0.1" data-translate-y="2000" data-translate="slides.about.intro.hey">
+                            HEY, I'M
+                        </div>
+                        <div class="introName" data-delay="0.1" data-translate-y="600">
+                            AYMAN MADANI
+                        </div>
+                        <object
+                            class="svg-logo"
+                            data="/SVG/logo.svg"
+                            type="image/svg+xml"
+                            data-delay="0.1"
+                            data-translate-y="100"
+                            data-translate-x="-50"
+                            data-origin-x="-50"
+                            data-origin-y="-50"
+                        ></object>
+                    </div>
+                    </section>
+                    <section
+                        class="about education vignette"
+                    >
+                        <div>
+                            <div class="introText" data-delay="0.1" data-translate-y="2000">
+                                Education Slide
+                            </div>
+                        </div>
+                    </section>
                 </section>
 
                 <!-- Work Slides -->
@@ -108,5 +146,6 @@
     </div>
 
     <script type="module" src="/JS/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </body>
 </html>
