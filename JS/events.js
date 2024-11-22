@@ -46,7 +46,7 @@ export function setupEventListeners() {
     const en = document.getElementById('en');
     const fr = document.getElementById('fr');
 
-    languageSelector.addEventListener('click', function(e) {
+    languageSelector.addEventListener('click', (e) => {
         if (e.target.id === 'en' || e.target.id === 'fr') {
             if (e.target.classList.contains('selected')) return;
 
@@ -83,5 +83,25 @@ export function setupEventListeners() {
             }, 1000);
         }
     });
+
+    
+    //adjust width of navbar
+    function adjustWidth() {
+        const baseWidth = 130 * 10.753; // Calculate base width
+        const offset =  400;
+        const windowWidth = window.innerWidth;
+
+        
+        const targetElement = document.querySelector('.navbar ul');
+        if (windowWidth <= baseWidth) {
+            let adjustedOffset = windowWidth * (offset / baseWidth);
+            let adjustedWidth = windowWidth - adjustedOffset;
+            targetElement.style.width = `${adjustedWidth}px`;
+        } else {
+            targetElement.style.width = ''; // Reset to default width if needed
+        }
+    }
+    window.addEventListener('resize', adjustWidth);
+    adjustWidth();
 
 }

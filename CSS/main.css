@@ -99,31 +99,6 @@ body, html {
 }
 
 
-/* styles.css */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 100%;
-    background-image: url('/SVG/TopBar.svg'); /* Path to your SVG */
-    background-repeat: no-repeat;
-    background-size: contain; /* Scale to cover the navbar area */
-    background-position: center; /* Center the SVG */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.navbar ul {
-    /* width: 100%; */
-    height: 130px;
-    display: flex;
-    list-style: none;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .navbar ul li a {
     color: gray;
     transition: color 0.3s ease;
@@ -148,32 +123,49 @@ body, html {
     align-self: center;
 }
 
-.nav-left,
-.nav-center,
-.nav-right {
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    background-image: url('/SVG/TopBar.svg'); /* Path to your SVG */
+    background-repeat: no-repeat;
+    background-size: contain; /* Scale to cover the navbar area */
+    background-position: center; /* Center the SVG */
     display: flex;
     align-items: center;
-    padding-inline: clamp(1rem, 3vw, 3rem);
-}
-
-.nav-left li, .nav-center li, .nav-right li {
-    margin: 0 0.5vw;
-}
-
-.nav-center {
-    flex-grow: 1; /* Center section will stay in the middle */
     justify-content: center;
 }
 
-.nav-center h1 {
-    color: white;
-    font-size: clamp(0.7rem, 3vw, 3rem);
-    text-decoration: none;
-    font-family: 'OsakeBrush';
-    letter-spacing: 0.1rem;
-    margin-top: 0.6vw;
-    margin-inline: 2rem;
-    margin-right: 5vw;
+.navbar ul {
+    width: calc((130px * 10.753) - 400px);
+    height: 130px;
+    display: flex;
+    justify-content: space-between; /* Evenly distribute left, center, and right */
+    align-items: center;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    gap: clamp(0.2rem, 1.2vw, 2rem); /* Adjust spacing between items as needed */
+}
+
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.nav-left li,
+.nav-right li,
+.nav-center object {
+    display: flex;
+    align-items: center;
+}
+
+.svg-nav{
+    width: clamp(1rem, 4vw, 4rem);
 }
 
 .mainSlide {
