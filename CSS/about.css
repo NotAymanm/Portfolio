@@ -1,5 +1,11 @@
 /* about.css */
-#particles-js {
+#intro-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#education-particles {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -7,48 +13,214 @@
 
 /* INTRO */
 .about.intro {
-    background-image: url('/Images/wallpaperTemp-enhance.png'); /* Update with the actual image path */
-    background-size: cover; /* Scale the image to cover the slide */
-    background-position: center; /* Center the image */
-    color: #ffffff; /* Set text color for readability */
+    background-image: url('/Images/wallpaperTemp-enhance.png');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
 
     transform: translateY(0);
 }
 
-.introText{
-    display: flex;
-    font-size: clamp(0.7rem, 3vw, 3.5rem);
-    text-decoration: none;
-    font-family: 'Bumbu';
-    letter-spacing: 0.3rem;
-    justify-content: center;
-}
-
-.introName{
-    display: flex;
-    font-size: clamp(0.7rem, 6vw, 30rem);
-    text-decoration: none;
-    font-family: 'Bumbu';
-    font-weight: lighter;
-    letter-spacing: 0.3rem;
-    justify-content: center;
-}
-
-.svg-logo{
+.intro-shadow {
     position: absolute;
-    width: clamp(0.7rem, 22vw, 28rem);
-    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.8) 10%,
+        rgba(0, 0, 0, 0.4) 40%,
+        rgba(255, 255, 255, 0) 75%
+    );
+}
+
+.introText {
+    display: flex;
+    font-size: clamp(0.7rem, 2vw, 3.5rem);
+    text-decoration: none;
+    font-family: var(--primary-font);
+    letter-spacing: 0.3rem;
+    justify-content: center;
+}
+
+.introName {
+    display: flex;
+    font-size: clamp(0.7rem, 5vw, 30rem);
+    text-decoration: none;
+    font-family: var(--primary-font);
+    letter-spacing: 0.3rem;
+    justify-content: center;
+    margin-top: 1%;
+    line-height: 90%;
+}
+
+.introDescription {
+    display: flex;
+    font-size: clamp(0.5rem, 1.28vw, 3rem);
+    text-decoration: none;
+    font-family: var(--third-font);
+    letter-spacing: clamp(0.1rem, 0.2vw, 0.4rem);
+    justify-content: center;
+}
+
+#dynamic-text {
+    display: inline-block;
+    transition: opacity 0.5s ease-in-out;
+    font-family: var(--primary-font);
+    margin-top: 0.53%;
+}
+
+.brush-stroke {
+    animation: brushStroke 1s ease-in-out forwards;
+}
+
+@keyframes brushStroke {
+    from {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+.svg-logo {
+    position: absolute;
+    width: clamp(0.7rem, 16vw, 28rem);
+    opacity: 0.5;
 
     /* allows events to occur over svg */
     pointer-events: none;
 
-    top: 50%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* EDUCATION */
 .about.education {
+    background-image: url('/Images/background-education.png');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+
     transform: translateY(100%);
+
+    z-index: 0;
 }
+
+.education-image{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('/Images/foreground-education.png');
+    background-size: cover;
+    background-position: center;
+
+    z-index: 1;
+
+    filter: contrast(1.2) brightness(0.8);
+}
+
+.education-shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        -25deg,
+        rgba(0, 0, 0, 1) 10%,
+        rgba(0, 0, 0, 0.8) 30%,
+        rgba(255, 255, 255, 0) 50%
+    ),
+    linear-gradient(
+        -85deg,
+        rgba(0, 0, 0, 0.8) 10%,
+        rgba(0, 0, 0, 0.2) 40%,
+        rgba(255, 255, 255, 0) 50%
+    );
+
+    z-index: 2;
+}
+
+.education-main-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 3;
+}
+
+.education-main {
+    text-align: center;
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.svg-carleton {
+    width: clamp(0.7rem, 20vw, 50rem);
+
+    /* allows events to occur over svg */
+    pointer-events: none;
+}
+
+.education-title {
+    font-size: clamp(0.7rem, 3vw, 30rem);
+    font-family: var(--secondary-font);
+    text-align: center;
+}
+
+.education-degree {
+    font-size: clamp(0.7rem, 2.5vw, 30rem);
+    font-family: var(--third-font);
+    font-weight: lighter;
+}
+
+/* Courses Section: Right-Aligned */
+.education-filler {
+    flex: 1;
+    max-width: clamp(15rem, 30vw, 30rem);
+    height: 100%;
+    margin-left: clamp(0rem, 4vw, 4rem);
+}
+.education-courses {
+    flex: 1;
+    max-width: clamp(15rem, 30vw, 30rem);
+    text-align: left;
+    margin-right: clamp(0rem, 4vw, 4rem);
+    padding: 20px;
+}
+
+.education-courses h3 {
+    font-size: clamp(1rem, 1.8vw, 2rem);
+    margin-bottom: 10px;
+    font-family: var(--primary-font);
+}
+
+.education-courses p {
+    font-size: clamp(0.7rem, 1.1vw, 2rem);
+    line-height: 1.5;
+
+    font-family: var(--secondary-font);
+    font-weight: 100;
+}
+  

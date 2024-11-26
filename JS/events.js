@@ -7,6 +7,7 @@ export function setupEventListeners() {
     
     window.addEventListener('load', () => {
         const progressBar = document.querySelector('.progress');
+        const loadingScreen = document.getElementById('loading-screen');
         const images = document.images; // Get all images on the page
         const totalAssets = images.length;
         let loadedAssets = 0;
@@ -15,10 +16,9 @@ export function setupEventListeners() {
             // If there are no images, directly complete the loading screen
             progressBar.style.width = '100%';
             setTimeout(() => {
-                const loadingScreen = document.getElementById('loading-screen');
                 loadingScreen.style.opacity = '0';
-                setTimeout(() => loadingScreen.style.display = 'none', 500);
-            }, 500); // Delay hiding the loading screen by 0.5 seconds
+                setTimeout(() => loadingScreen.style.display = 'none', 1000); //remove after fade
+            }, 500); //Delay hiding the loading screen by 0.5 seconds
             return;
         }
     
@@ -32,9 +32,8 @@ export function setupEventListeners() {
     
                 if (progress >= 100) {
                     setTimeout(() => {
-                        const loadingScreen = document.getElementById('loading-screen');
                         loadingScreen.style.opacity = '0';
-                        setTimeout(() => loadingScreen.style.display = 'none', 500);
+                        setTimeout(() => loadingScreen.style.display = 'none', 1000); //remove after fade
                     }, 500); // Delay hiding the loading screen by 0.5 seconds
                 }
             };
@@ -86,22 +85,30 @@ export function setupEventListeners() {
 
     
     //adjust width of navbar
-    function adjustWidth() {
-        const baseWidth = 130 * 10.753; // Calculate base width
+    //keeps the navigation bar at the top of the tab
+    function adjustNavbar() {
+        const navbarHeight = 146.53;
+        const navbarWidth = 1522.66;
         const offset =  400;
+        const navbarGivenHeight = 130;
+        const multiplier = navbarWidth / navbarHeight;
+        const baseWidth = navbarGivenHeight * multiplier; // Calculate base width
         const windowWidth = window.innerWidth;
-
         
         const targetElement = document.querySelector('.navbar ul');
         if (windowWidth <= baseWidth) {
             let adjustedOffset = windowWidth * (offset / baseWidth);
             let adjustedWidth = windowWidth - adjustedOffset;
             targetElement.style.width = `${adjustedWidth}px`;
+
+            let adjustedHeight = windowWidth / multiplier;
+            targetElement.style.height = `${adjustedHeight}px`;
         } else {
             targetElement.style.width = ''; // Reset to default width if needed
+            targetElement.style.height = ''; // Reset to default height if needed
         }
     }
-    window.addEventListener('resize', adjustWidth);
-    adjustWidth();
+    window.addEventListener('resize', adjustNavbar);
+    adjustNavbar();
 
 }

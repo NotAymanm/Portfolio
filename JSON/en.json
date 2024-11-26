@@ -1,10 +1,10 @@
 {
   "title": "Ayman's Portfolio",
   "navbar": {
-    "about": "About",
-    "work": "Work",
-    "projects": "Projects",
-    "contact": "Contact"
+    "about": "ABOUT",
+    "work": "WORK",
+    "projects": "PROJECTS",
+    "contact": "CONTACT"
   },
   "slides": {
     "about": {

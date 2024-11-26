@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Futura';
+    src: url('/fonts/Futura/Futura\ PT\ Light.ttf') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('/fonts/Futura/Futura\ PT\ Book.ttf') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('/fonts/Futura/Futura\ PT\ Medium.ttf') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('/fonts/Futura/Futura\ PT\ Heavy.ttf') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bumbu';
+    src: url('/fonts/bBumbuSushi.ttf') format('woff2');
+}
+
+@font-face {
+    font-family: 'Seibi';
+    src: url('/fonts/Seibi\ Seireisho.otf') format('woff2');
+}

@@ -12,11 +12,11 @@ export function navigateSlides(direction) {
     const totalSlides = sections[currentSection].length;
 
     if (direction === 'down') {
-        if((sections[currentSection].length - 1) == currentIndex) return;
+        if ((sections[currentSection].length - 1) == currentIndex) return;
         // Update the index and ensure it wraps around
         setCurrentIndex((currentIndex + 1) % totalSlides);
     } else {
-        if(0 == currentIndex) return;
+        if (0 == currentIndex) return;
         // Update the index and ensure it wraps around
         setCurrentIndex((currentIndex - 1 + totalSlides) % totalSlides);
     }

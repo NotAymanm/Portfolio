@@ -1,10 +1,10 @@
 {
   "title": "Portfolio de Ayman",
   "navbar": {
-    "about": "A propos",
-    "work": "Travail",
-    "projects": "Projets",
-    "contact": "Contact"
+    "about": "A PROPOS",
+    "work": "TRAVAIL",
+    "projects": "PROJETS",
+    "contact": "CONTACT"
   },
   "slides": {
     "about": {

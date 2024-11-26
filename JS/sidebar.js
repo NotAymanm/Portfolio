@@ -79,7 +79,7 @@ export function updateSidebar(section, activeIndex = 0) {
             slides[current].style.transform = step === 1 ? 'translateY(-100%)' : 'translateY(100%)';
             slides[current + step].style.transform = 'translateY(0)';
 
-            setTimeout(() => animateSequentially(current + step), 1000); // Adjust timing to match your CSS transition
+            setTimeout(() => animateSequentially(current + step), 1000); // Adjust timing to match CSS transition
         };
 
         animateSequentially(currentActiveIndex);
@@ -123,7 +123,7 @@ export function showSlide(index, section, sequential = false) {
                     ? `translate(${translateX}%, -${translateY}%)` // Customize X and Y movement
                     : i === index
                     ? `translate(${originX}%, ${originY}%)` // Reset to origin
-                    : `translate(-${translateX}%, ${translateY}%)`;
+                    : `translate(${translateX}%, ${translateY}%)`;
         });
     });
 
@@ -160,11 +160,13 @@ export function handleSectionChange(section) {
     updateSidebar(currentSection, currentIndex);
     showSlide(currentIndex, currentSection);
 
-    //match timeout to fade transtion between sections
+    //matches timeout to fade transtion between sections
     if(previousSection){
-        setTimeout(() => {
-            resetSlides(previousSection);
-        }, 500);
+        if(previousSection !== currentSection){
+            setTimeout(() => {
+                resetSlides(previousSection);
+            }, 500);
+        }
     }
 
     document.querySelectorAll('.navbar .nav-left li a').forEach(item => {

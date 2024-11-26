@@ -4,8 +4,8 @@
     background-size: cover;
     background-position: center;
     color: #ffffff; */
-
-    /* transition: transform 1s ease-in-out; */
+    /* background: #a21f1f; */
+    
     transform: translateY(0);
 }
 
@@ -16,7 +16,6 @@
     background-position: center;
     color: #ffffff; */
 
-    /* transition: transform 1s ease-in-out; */
     transform: translateY(100%);
 }
 
@@ -26,6 +25,5 @@
     background-position: center;
     color: #ffffff; */
 
-    /* transition: transform 1s ease-in-out; */
     transform: translateY(100%);
 }
