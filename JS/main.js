@@ -1,9 +1,9 @@
 //main.js
 import { loadLanguage } from './language.js';
-import { updateSidebar, showSlide, handleSectionChange } from './sidebar.js';
+import { updateSidebar } from './sidebar.js';
+import { showSlide, handleSectionChange } from './slides.js';
 import { setupEventListeners } from './events.js';
 import { currentSection, currentIndex } from './state.js';
-import { loadParticles } from './loadParticles.js';
 import { countFps } from './fpsCounter.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,6 +12,5 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentIndex, currentSection); // Show the first slide of the default section
     handleSectionChange(currentSection); // Set default active state in navbar
     setupEventListeners(); // Set up event listeners for navigation
-    loadParticles();
     countFps();
 });

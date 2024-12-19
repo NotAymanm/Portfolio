@@ -1,7 +1,6 @@
 // events.js
 import { loadLanguage } from './language.js';
-import { handleSectionChange } from './sidebar.js';
-import { navigateSlides } from './slides.js';
+import { navigateSlides, handleSectionChange } from './slides.js';
 
 export function setupEventListeners() {
     
