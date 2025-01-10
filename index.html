@@ -69,7 +69,6 @@
                 <!-- About Slides -->
                 <section id="about" class="section">
                     <section class="about intro">
-                        <!-- <div id="intro"></div> -->
                         <div id="intro-particles"></div>
                         <div class="intro-shadow"></div>
                         <div>
@@ -140,50 +139,118 @@
                             <div class="job-descriptions">
                                 <div class="job-section glass">
                                     <h3>Job Description</h3>
-                                    <p>Find in-depth information about Next.js features and API.</p>
+                                    <p>Developed MicroGPT's mobile application from concept to launch and created a video
+                                        demo to showcase its features.</p>
+                                    <div class="additional-content">
+                                        <p>Led the design and development of the mobile application using Expo React Native,
+                                            integrating Firestore for database management. Collaborated with the team to use
+                                            GitHub for version control. Designed and produced a professional video demo with
+                                            Adobe After Effects and Photoshop, highlighting the app's functionality and appeal.</p>
+                                    </div>
                                     <object class="svg-drop-down" data="/SVG/down-arrow.svg" type="image/svg+xml"></object>
-                                </div>
+                                </div>        
                                 <div class="job-section glass">
                                     <h3>Key Achievements</h3>
-                                    <p>Learn about Next.js in an interactive course with quizzes!</p>
+                                    <p>Delivered innovative features and optimized performance while earning praise for the application and video demo.</p>
+                                    <div class="additional-content">
+                                        <ul>
+                                            <li><strong>Recognition:</strong> Received commendation from the CEO for the application's
+                                                design and functionality, as well as the video demo's professionalism.</li>
+                                            <li><strong>Optimization:</strong> Reduced database read usage significantly by implementing
+                                                selective data fetching and local data caching.</li>
+                                            <li><strong>Innovation:</strong> Developed a camera feature that lets users capture images
+                                                of code, analyze the selected portion, and extract text using Google Cloud Vision API.</li>
+                                        </ul>
+                                    </div>
                                     <object class="svg-drop-down" data="/SVG/down-arrow.svg" type="image/svg+xml"></object>
                                 </div>
                                 <div class="job-section glass">
                                     <h3>Skills Utilized</h3>
-                                    <p>Explore the Next.js 13 playground.</p>
+                                    <div class="work-icons">
+                                        <img src="/Images/LogoIcons/react native.svg" alt="React Native" class="icon">
+                                        <img src="/Images/LogoIcons/expo go.svg" alt="Expo" class="icon">
+                                        <img src="/Images/LogoIcons/Git.svg" alt="Git" class="icon">
+                                        <img src="/Images/LogoIcons/github.svg" alt="Github" class="icon">
+                                        <img src="/Images/LogoIcons/firebase.svg" alt="Firebase" class="icon">
+                                        <img src="/Images/LogoIcons/google-cloud.svg" alt="Google Cloud Vision" class="icon">
+                                        <img src="/Images/LogoIcons/Photoshop.svg" alt="Photoshop" class="icon">
+                                        <img src="/Images/LogoIcons/afterEffects.svg" alt="After Effects" class="icon">
+                                    </div>
+                                    <div class="additional-content">
+                                        <ul>
+                                            <li><strong>Mobile Development:</strong> Hands-on experience with Expo React Native and Git.</li>
+                                            <li><strong>Database Management:</strong> Utilized Firebase Firestore to handle real-time data easily.</li>
+                                            <li><strong>API Integration:</strong> 
+                                                <ul>
+                                                    <li>Integrated <strong>Google Cloud Vision API</strong> for advanced image text recognition.</li>
+                                                    <li>Implemented <strong>MicroGPT's proprietary API</strong>.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Design:</strong> 
+                                                <ul>
+                                                    <li>Focused on UI/UX design to deliver intuitive and inviting user experiences.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
                                     <object class="svg-drop-down" data="/SVG/down-arrow.svg" type="image/svg+xml"></object>
                                 </div>
                                 <div class="job-section glass">
-                                    <h3>Communication</h3>
-                                    <p>Collaborated effectively with product managers, UX/UI designers.</p>
-                                    <object class="svg-drop-down" data="/SVG/down-arrow.svg" type="image/svg+xml"></object>
+                                    <h3>Video Demo</h3>
+                                    <div class="video-container">
+                                        <video id="video" autoplay muted loop>
+                                            <source src="/Videos/MicroGPT.mp4" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <img src="/SVG/fullscreen.svg" alt="⤢" class="fullscreen-icon">
+                                        <!-- <button id="toggleSound">Unmute</button>
+                                        <button id="playPause">Play</button> -->
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div id="fullscreenModalVideo" class="fullscreen-modal">
+                            <div class="fullscreen-content">
+                                <video id="fullscreenVideo" controls></video>
+                                <img src="/SVG/x.svg" alt="&times;" class="fullscreen-icon close">
                             </div>
                         </div>
                     </section>
 
-                    <section class="work exp2" data-translate="slides.work.experience2">
+                    <!-- <section class="work exp2" data-translate="slides.work.experience2">
                         Experience 2 Slide
                     </section>
 
                     <section class="work exp3" data-translate="slides.work.experience3">
                         Experience 3 Slide
-                    </section>
+                    </section> -->
                 </section>
 
                 <!-- Projects Slides -->
                 <section id="projects" class="section">
-                    <section class="projects pro1" data-translate="slides.projects.project1">
-                        Project 1 Slide
+                    <section class="projects programs">
+                        <!-- Project Slides -->
+                        <div class="projects-grid">
+                            <!-- Dynamically adds projects -->
+                        </div>
+
+                        <!-- Fullscreen Modal -->
+                        <div id="fullscreenModalImage" class="fullscreen-modal">
+                            <div class="fullscreen-content">
+                                <img id="fullscreenImage"/>
+                                <img src="/SVG/x.svg" alt="&times;" class="fullscreen-icon close">
+                            </div>
+                        </div>
                     </section>
 
-                    <section class="projects pro2" data-translate="slides.projects.project2">
+                    <!-- <section class="projects 3DModels" data-translate="slides.projects.project2">
                         Project 2 Slide
                     </section>
 
-                    <section class="projects pro3" data-translate="slides.projects.project3">
+                    <section class="projects other" data-translate="slides.projects.project3">
                         Project 3 Slide
-                    </section>
+                    </section> -->
                 </section>
 
             </div>
@@ -191,6 +258,8 @@
     </div>
 
     <script type="module" src="/JS/main.js"></script>
+    <script src="/JS/fullscreen.js"></script>
+    <script src="/JS/addingProgramProjects.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </body>
 

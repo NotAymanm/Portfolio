@@ -5,6 +5,7 @@ import { showSlide, handleSectionChange } from './slides.js';
 import { setupEventListeners } from './events.js';
 import { currentSection, currentIndex } from './state.js';
 import { countFps } from './fpsCounter.js';
+import { dynamicText } from './dynamicText.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     loadLanguage('en'); // Load default language
@@ -13,4 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
     handleSectionChange(currentSection); // Set default active state in navbar
     setupEventListeners(); // Set up event listeners for navigation
     countFps();
+    dynamicText();
 });

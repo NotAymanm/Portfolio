@@ -1,12 +1,14 @@
 // slides.js
+// TODO: Put everything on the same page
+
 import { currentSection, currentIndex, setCurrentIndex, setCurrentSection } from './state.js';
 import { updateSidebar } from './sidebar.js';
 import { loadParticles, unloadParticles, sectionParticles } from './loadParticles.js';
 
 export const sections = {
     about: ['Intro', 'Education'],
-    work: ['Experience 1', 'Experience 2', 'Experience 3'],
-    projects: ['Project 1', 'Project 2', 'Project 3']
+    work: ['MicroGPT', /* 'Experience 2', 'Experience 3' */],
+    projects: ['Programs', /* '3D Models', 'Other' */]
 };
 
 export function navigateSlides(direction) {

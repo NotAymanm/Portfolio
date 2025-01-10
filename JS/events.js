@@ -110,4 +110,40 @@ export function setupEventListeners() {
     window.addEventListener('resize', adjustNavbar);
     adjustNavbar();
 
+    // Add event listeners to the job sections
+    document.querySelectorAll('.job-section').forEach((section) => {
+        section.addEventListener('mouseenter', () => {
+            // Get the full height of the content
+            const contentHeight = section.scrollHeight;
+            // console.log(contentHeight);
+            section.style.maxHeight = `${contentHeight}px`;
+        });
+    
+        section.addEventListener('mouseleave', () => {
+            // Collapse back to the original height
+            section.style.maxHeight = '190px';
+        });
+    });
+
+
+    // Add event listeners for video items
+    const video = document.getElementById("video");
+    const toggleSoundButton = document.getElementById("toggleSound");
+    const playPauseButton = document.getElementById("playPause");
+
+    toggleSoundButton.addEventListener("click", () => {
+        video.muted = !video.muted;
+        toggleSoundButton.textContent = video.muted ? "Unmute" : "Mute";
+    });
+    playPauseButton.addEventListener("click", () => {
+    if (video.paused || video.ended) {
+        video.play();
+        playPauseButton.textContent = "Pause";
+    } else {
+        video.pause();
+        playPauseButton.textContent = "Play";
+    }
+    });
+
+
 }

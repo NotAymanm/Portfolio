@@ -24,7 +24,7 @@
   },
   "sidebar": {
     "about": ["Intro", "Education"],
-    "work": ["Experience 1", "Experience 2", "Experience 3"],
-    "projects": ["Project 1", "Project 2", "Project 3"]
+    "work": ["MicroGPT"],
+    "projects": ["Programs"]
   }
 }

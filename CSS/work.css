@@ -1,12 +1,22 @@
 /* work.css */
 .svg-drop-down {
-    align-self: self-end;
-    justify-self: center;
     width: clamp(0.7rem, 1.7vw, 1.7rem);
-    /* allows events to occur over svg */
     pointer-events: none;
-
     filter: invert();
+
+    opacity: 1; /* Fully visible by default */
+    visibility: visible; /* Visible by default */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: absolute; /* Ensure proper positioning */
+    bottom: 10px; /* Place it near the bottom of the job-section */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    z-index: 5; /* Ensure it is above content */
+}
+
+.job-section:hover .svg-drop-down {
+    opacity: 0; /* Fade out on hover */
+    visibility: hidden; /* Make it invisible on hover */
 }
 
 .work.exp1 {
@@ -28,6 +38,34 @@
     gap: 20px;
 }
 
+@keyframes gradientAnimationIn {
+    0% { background: linear-gradient(140deg, rgba(106, 106, 106, 0.171), rgba(0, 0, 0, 0)); }
+    10% { background: linear-gradient(132deg, rgba(98, 98, 98, 0.2), rgba(0, 0, 0, 0)); }
+    20% { background: linear-gradient(124deg, rgba(90, 90, 90, 0.25), rgba(0, 0, 0, 0)); }
+    30% { background: linear-gradient(116deg, rgba(82, 82, 82, 0.3), rgba(0, 0, 0, 0)); }
+    40% { background: linear-gradient(108deg, rgba(74, 74, 74, 0.35), rgba(0, 0, 0, 0)); }
+    50% { background: linear-gradient(100deg, rgba(66, 66, 66, 0.4), rgba(0, 0, 0, 0)); }
+    60% { background: linear-gradient(92deg, rgba(58, 58, 58, 0.42), rgba(0, 0, 0, 0)); }
+    70% { background: linear-gradient(84deg, rgba(50, 50, 50, 0.44), rgba(0, 0, 0, 0)); }
+    80% { background: linear-gradient(76deg, rgba(42, 42, 42, 0.46), rgba(0, 0, 0, 0)); }
+    90% { background: linear-gradient(68deg, rgba(30, 30, 30, 0.48), rgba(0, 0, 0, 0)); }
+    100% { background: linear-gradient(60deg, rgba(18, 18, 18, 0.5), rgba(0, 0, 0, 0)); }
+}
+
+@keyframes gradientAnimationOut {
+    0% { background: linear-gradient(60deg, rgba(18, 18, 18, 0.5), rgba(0, 0, 0, 0)); }
+    10% { background: linear-gradient(68deg, rgba(30, 30, 30, 0.48), rgba(0, 0, 0, 0)); }
+    20% { background: linear-gradient(76deg, rgba(42, 42, 42, 0.46), rgba(0, 0, 0, 0)); }
+    30% { background: linear-gradient(84deg, rgba(50, 50, 50, 0.44), rgba(0, 0, 0, 0)); }
+    40% { background: linear-gradient(92deg, rgba(58, 58, 58, 0.42), rgba(0, 0, 0, 0)); }
+    50% { background: linear-gradient(100deg, rgba(66, 66, 66, 0.4), rgba(0, 0, 0, 0)); }
+    60% { background: linear-gradient(108deg, rgba(74, 74, 74, 0.35), rgba(0, 0, 0, 0)); }
+    70% { background: linear-gradient(116deg, rgba(82, 82, 82, 0.3), rgba(0, 0, 0, 0)); }
+    80% { background: linear-gradient(124deg, rgba(90, 90, 90, 0.25), rgba(0, 0, 0, 0)); }
+    90% { background: linear-gradient(132deg, rgba(98, 98, 98, 0.2), rgba(0, 0, 0, 0)); }
+    100% { background: linear-gradient(140deg, rgba(106, 106, 106, 0.171), rgba(0, 0, 0, 0)); }
+}
+
 .glass {
     background: linear-gradient(140deg, rgba(106, 106, 106, 0.171), rgba(0, 0, 0, 0));
     backdrop-filter: blur(10px);
@@ -37,7 +75,14 @@
     padding: 15px 25px;
     border-radius: 15px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    
+    will-change: background;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    animation: gradientAnimationOut 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+.glass:hover {
+    animation: gradientAnimationIn 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 
 .exp1-background {
@@ -102,8 +147,9 @@
 
 .job-descriptions {
     grid-column: 1 / 3;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     align-self: end;
     margin-top: 20px;
 }
@@ -112,26 +158,81 @@
     display: grid;
     grid-template-rows: auto auto 1fr; /* Allocate remaining space to the last element */
     text-align: left;
-    max-width: 260px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    position: relative;
+    max-height: 190px;
+
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+.job-section:hover {
+    max-height: 1000px;
+    z-index: 10;
+}
+
+.work-icons {
+    display: flex;
+    justify-content: left; /* align icons left */
+    gap: 8px; /* Add space between icons */
+    margin-top: 8px; /* Reduce top margin */
+
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.job-section .additional-content {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease;
+    transition-delay: 0.2s;
+
+    width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.job-section:hover .additional-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.job-section {
+    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-family: var(--secondary-font);
+    font-weight: 200;
+    
+    color: #c0c0c0;
 }
 
 .job-section h3 {
     font-size: clamp(0.7rem, 1.3vw, 1.5rem);
     font-family: var(--secondary-font);
-
+    color: var(--text-color);
     margin-bottom: 7px;
 }
 
-.job-section p {
-    font-size: clamp(0.7rem, 1vw, 1rem);
-    font-family: var(--secondary-font);
-    font-weight: 200;
-
-    color: #c0c0c0;
+.additional-content ul {
+    margin-top: 10px;
+    padding-left: 20px; /* Indent list items */
+    list-style-type: disc; /* Classic bullet style */
 }
 
+.additional-content ul ul {
+    list-style-type: circle; /* Nested bullets with circle style */
+    margin-top: 3px; /* Slight spacing for nested items */
+}
 
+.additional-content li {
+    margin-bottom: 5px; /* Space between list items */
+}
 
+.additional-content li strong {
+    color: var(--primary-color); /* Bold text is different color for emphasis */
+}
 
 
 
