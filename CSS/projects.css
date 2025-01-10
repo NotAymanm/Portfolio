@@ -1,16 +1,111 @@
 /* project.css */
-/* TODO: Make a grid style for projects and work if you have extra time */
-
-.projects.pro1 {
-    /* background-image: url('/Images/wallpaperTemp-enhance.png');
-    background-size: cover;
-    background-position: center;
-    color: #ffffff; */
-    /* background: #a21f1f; */
-    
-    transform: translateY(0);
+.projects-grid {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0 auto;
+    padding: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
 }
 
+.project-item {
+    width: 25%;
+    min-width: 300px; /* Minimum width to prevent too narrow items */
+    height: fit-content; /* Allow height to fit content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-dark);
+    border: 2px solid var(--secondary-color);
+    padding: 10px;
+    text-align: center;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
+
+.project-title {
+    font-family: var(--primary-font);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 8px 0 4px 0; /* Reduce bottom margin */
+    color: var(--secondary-color);
+}
+
+.project-description {
+    font-family: var(--secondary-font);
+    font-weight: 200;
+    font-size: 1rem;
+    color: var(--accent-color);
+    margin: 4px 0; /* Reduce vertical margins */
+    text-align: center;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    padding-inline: 10px;
+}
+
+.project-icons {
+    display: flex;
+    justify-content: center; /* Center icons horizontally */
+    gap: 8px; /* Add space between icons */
+    margin-top: 8px;
+
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.github-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* Add space between icon and text */
+
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: var(--primary-color);
+    color: var(--background-dark);
+
+    font-family: var(--secondary-font);
+    font-size: medium;
+    font-weight: 300;
+
+    transition: transform 0.2s ease;
+
+    cursor: pointer;
+}
+.github-button:hover {
+    transform: scale(1.04); /* Slightly enlarge on hover */
+}
+
+/* Prevent scaling for the GitHub icon */
+.github-button .github-icon:hover {
+    transform: none;
+}
+
+.projects.programs {
+    /* background-image: url('/Images/Projects/Projects.png');
+    background-size: cover;
+    background-position: center; */
+
+    /* background: black; */
+
+    background: linear-gradient(217deg, rgba(18, 29, 82, 0.876), rgba(0, 0, 0, 0.106) 70%),
+    linear-gradient(127deg, rgb(12, 30, 28), rgba(89, 0, 255, 0.487) 70%),
+    linear-gradient(336deg, rgba(7, 13, 56, 0.874), rgba(0, 0, 0, 0.851) 70%);
+    transform: translateY(0);
+}
 
 .projects.pro2 {
     /* background-image: url('/Images/wallpaperTemp-enhance.png');
