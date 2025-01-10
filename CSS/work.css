@@ -1,12 +1,22 @@
 /* work.css */
 .svg-drop-down {
-    align-self: self-end;
-    justify-self: center;
     width: clamp(0.7rem, 1.7vw, 1.7rem);
-    /* allows events to occur over svg */
     pointer-events: none;
-
     filter: invert();
+
+    opacity: 1; /* Fully visible by default */
+    visibility: visible; /* Visible by default */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: absolute; /* Ensure proper positioning */
+    bottom: 10px; /* Place it near the bottom of the job-section */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    z-index: 5; /* Ensure it is above content */
+}
+
+.job-section:hover .svg-drop-down {
+    opacity: 0; /* Fade out on hover */
+    visibility: hidden; /* Make it invisible on hover */
 }
 
 .work.exp1 {
@@ -149,47 +159,80 @@
     grid-template-rows: auto auto 1fr; /* Allocate remaining space to the last element */
     text-align: left;
     overflow: hidden;
-    transition: all 0.3s ease;
-    height: 150px;
-    position: relative; /* Add this */
+    transition: all 0.5s ease;
+    position: relative;
+    max-height: 190px;
+
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: break-word;
 }
 
 .job-section:hover {
-    height: 300px;
+    max-height: 1000px;
     z-index: 10;
+}
+
+.work-icons {
+    display: flex;
+    justify-content: left; /* align icons left */
+    gap: 8px; /* Add space between icons */
+    margin-top: 8px; /* Reduce top margin */
+
+    max-width: 100%;
+    flex-wrap: wrap;
 }
 
 .job-section .additional-content {
     opacity: 0;
     visibility: hidden;
-    height: 0;
     transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease;
     transition-delay: 0.2s;
+
+    width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .job-section:hover .additional-content {
     opacity: 1;
     visibility: visible;
-    height: auto;
+}
+
+
+.job-section {
+    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-family: var(--secondary-font);
+    font-weight: 200;
+    
+    color: #c0c0c0;
 }
 
 .job-section h3 {
     font-size: clamp(0.7rem, 1.3vw, 1.5rem);
     font-family: var(--secondary-font);
-
+    color: var(--text-color);
     margin-bottom: 7px;
 }
 
-.job-section p {
-    font-size: clamp(0.7rem, 1vw, 1rem);
-    font-family: var(--secondary-font);
-    font-weight: 200;
-
-    color: #c0c0c0;
+.additional-content ul {
+    margin-top: 10px;
+    padding-left: 20px; /* Indent list items */
+    list-style-type: disc; /* Classic bullet style */
 }
 
+.additional-content ul ul {
+    list-style-type: circle; /* Nested bullets with circle style */
+    margin-top: 3px; /* Slight spacing for nested items */
+}
 
+.additional-content li {
+    margin-bottom: 5px; /* Space between list items */
+}
 
+.additional-content li strong {
+    color: var(--primary-color); /* Bold text is different color for emphasis */
+}
 
 
 
