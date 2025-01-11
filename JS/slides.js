@@ -1,80 +1,119 @@
 // slides.js
 // TODO: Put everything on the same page
 
-import { currentSection, currentIndex, setCurrentIndex, setCurrentSection } from './state.js';
+import { currentSection, currentIndex, setCurrentIndex, setCurrentSection, getTotalSlides, getGlobalIndex, getSectionFromGlobal } from './state.js';
 import { updateSidebar } from './sidebar.js';
 import { loadParticles, unloadParticles, sectionParticles } from './loadParticles.js';
 
 export const sections = {
     about: ['Intro', 'Education'],
-    work: ['MicroGPT', /* 'Experience 2', 'Experience 3' */],
-    projects: ['Programs', /* '3D Models', 'Other' */]
+    work: ['Experience 1: MicroGPT', /* 'Experience 2', 'Experience 3' */],
+    projects: ['Projects', /* '3D Models', 'Other' */]
 };
 
 export function navigateSlides(direction) {
-    const totalSlides = sections[currentSection].length;
+    const globalIndex = getGlobalIndex(sections, currentSection, currentIndex);
+    const totalSlides = getTotalSlides(sections);
 
+    let newGlobalIndex;
     if (direction === 'down') {
-        if ((sections[currentSection].length - 1) == currentIndex) return;
-        // Update the index and ensure it wraps around
-        setCurrentIndex((currentIndex + 1) % totalSlides);
+        //if its the last slide in section
+        if (globalIndex >= totalSlides - 1) return;
+        // Updates the index
+        newGlobalIndex = globalIndex + 1;
     } else {
-        if (0 == currentIndex) return;
-        // Update the index and ensure it wraps around
-        setCurrentIndex((currentIndex - 1 + totalSlides) % totalSlides);
+        //if its the first slide in section
+        if (globalIndex <= 0) return;
+        // Updates the index
+        newGlobalIndex = globalIndex - 1;
     }
 
-    showSlide(currentIndex, currentSection);
+    const { section, index } = getSectionFromGlobal(sections, newGlobalIndex);
+
+    if (section !== currentSection) {
+        handleSectionChange(section);
+    }
+
+    setCurrentSection(section);
+    setCurrentIndex(index);
+    showSlide(currentIndex, section);
 }
 
 
-export function showSlide(index, section, sequential = false) {
-    const slides = document.querySelectorAll(`.${section}`);
-    slides.forEach((slide, i) => {
-        // Parent slide transition
-        slide.classList.toggle('active', i === index);
-        slide.style.transition = 'transform 1s ease-in-out'; // Parent speed
-        slide.style.transform =
-            i < index
-                ? 'translateY(-100%)'
-                : i === index
-                ? 'translateY(0)'
-                : 'translateY(100%)';
+export function showSlide(index, currentSection) {
+    // 1. Get all sections and calculate global indices
+    const allSections = Object.entries(sections);
+    let globalCurrentIndex = 0;
+    let targetGlobalIndex = 0;
 
-        // Handle all child elements dynamically
-        const children = slide.querySelectorAll('[data-speed], [data-delay], [data-translate-x], [data-translate-y], [data-origin-x], [data-origin-y]');
-        children.forEach(child => {
-            const speed = child.dataset.speed || 1; // Default speed: 1s
-            const delay = child.dataset.delay || 0; // Default delay: 0s
-            const translateX = child.dataset.translateX || '0'; // Default translation on X-axis: 0
-            const translateY = child.dataset.translateY || '0'; // Default translation on Y-axis: 0
-            const originX = child.dataset.originX || '0'; // Default origin on X-axis
-            const originY = child.dataset.originY || '0'; // Default origin on Y-axis
+    // Calculate target global index
+    for (const [section, slides] of allSections) {
+        if (section === currentSection) {
+            targetGlobalIndex = globalCurrentIndex + index;
+            break;
+        }
+        globalCurrentIndex += slides.length;
+    }
 
-            // Apply transform transition (speed and delay) for child elements
-            child.style.transition = `transform ${speed}s ease-in-out ${delay}s`;
+    // 2. Reset and process all slides
+    globalCurrentIndex = 0;
+
+    for (const [section, _] of allSections) {
+        const slides = document.querySelectorAll(`.${section}`);
+        
+        slides.forEach((slide, i) => {
+            const slideGlobalIndex = globalCurrentIndex + i;
             
-            // Apply translation to the sub-elements using the specified X and Y amounts
-            child.style.transform =
-                i < index
-                    ? `translate(${translateX}%, -${translateY}%)` // Customize X and Y movement
-                    : i === index
-                    ? `translate(${originX}%, ${originY}%)` // Reset to origin
-                    : `translate(${translateX}%, ${translateY}%)`;
-        });
-    });
+            // Ensure slide has correct starting position
+            slide.classList.toggle('active', i === index);
+            slide.style.transition = 'transform 1s ease-in-out';
+            
+            // Calculate transform based on global position
+            if (slideGlobalIndex < targetGlobalIndex) {
+                slide.style.transform = 'translateY(-100%)';
+            } else if (slideGlobalIndex === targetGlobalIndex) {
+                slide.style.transform = 'translateY(0)';
+            } else {
+                slide.style.transform = 'translateY(100%)';
+            }
 
+            // Handle children animations
+            const children = slide.querySelectorAll('[data-speed], [data-delay], [data-translate-x], [data-translate-y], [data-origin-x], [data-origin-y]');
+            children.forEach(child => {
+                const speed = child.dataset.speed || 1; // Default speed: 1s
+                const delay = child.dataset.delay || 0; // Default delay: 0s
+                const translateX = child.dataset.translateX || '0'; // Default translation on X-axis: 0
+                const translateY = child.dataset.translateY || '0'; // Default translation on Y-axis: 0
+                const originX = child.dataset.originX || '0'; // Default origin on X-axis
+                const originY = child.dataset.originY || '0'; // Default origin on Y-axis
+
+                // Apply transform transition (speed and delay) for child elements
+                child.style.transition = `transform ${speed}s ease-in-out ${delay}s`;
+                
+                if (slideGlobalIndex < targetGlobalIndex) {
+                    child.style.transform = `translate(${translateX}%, -${translateY}%)`;
+                } else if (slideGlobalIndex === targetGlobalIndex) {
+                    child.style.transform = `translate(${originX}%, ${originY}%)`;
+                } else {
+                    child.style.transform = `translate(${translateX}%, ${translateY}%)`;
+                }
+            });
+        });
+        
+        globalCurrentIndex += slides.length;
+    }
+
+    // 3. Update sidebar
     const sidebarList = document.getElementById('sidebar-list');
     const sidebarItems = sidebarList.querySelectorAll('li');
     sidebarItems.forEach((item, i) => {
-        item.classList.toggle('active', i === index);
+        item.classList.toggle('active', i === targetGlobalIndex);
     });
 }
     
 
 export function handleSectionChange(section) {
     const sections = document.querySelectorAll('.section');
-
     let previousSection = null;
 
     sections.forEach(section => {
@@ -92,23 +131,12 @@ export function handleSectionChange(section) {
         activeSection.classList.add('active'); // Add 'active' class to the selected section
     }
 
-    setCurrentSection(section);
-    setCurrentIndex(0);
-
-    updateSidebar(currentSection, currentIndex);
-    showSlide(currentIndex, currentSection);
+    updateSidebar();
 
     // Manage particles
     unloadParticles();
-    const currentParticles = sectionParticles[currentSection] || [];
+    const currentParticles = sectionParticles[section] || [];
     loadParticles(currentParticles);
-
-    //matches timeout to fade transtion between sections
-    if(previousSection && previousSection !== currentSection){
-        setTimeout(() => {
-            resetSlides(previousSection);
-        }, 500);
-    }
 
     document.querySelectorAll('.navbar .nav-left li a').forEach(item => {
         const itemSection = item.getAttribute('href').substring(1);
@@ -130,54 +158,3 @@ export function resetSlides(section){
         slides.forEach(slide => slide.style.transition = 'transform 1s ease-in-out');
     }, 50);
 }
-
-
-
-
-
-
-
-
-
-
-
-/* export function showSlide(index, section, sequential = false) {
-    const slides = document.querySelectorAll(`.${section}`);
-    const totalSlides = slides.length;
-
-    if (!sequential) {
-        // Direct jump (existing functionality)
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-            slide.style.transform = i < index
-                ? 'translateY(-100%)'
-                : i === index
-                ? 'translateY(0)'
-                : 'translateY(100%)';
-        });
-    } else {
-        // Sequential transition
-        const currentActiveIndex = [...slides].findIndex(slide =>
-            slide.classList.contains('active')
-        );
-        const step = index > currentActiveIndex ? 1 : -1;
-
-        const animateSequentially = (current) => {
-            if (current === index) return;
-
-            slides[current].classList.remove('active');
-            slides[current + step].classList.add('active');
-            slides[current].style.transform = step === 1 ? 'translateY(-100%)' : 'translateY(100%)';
-            slides[current + step].style.transform = 'translateY(0)';
-
-            setTimeout(() => animateSequentially(current + step), 1000); // Adjust timing to match CSS transition
-        };
-
-        animateSequentially(currentActiveIndex);
-    }
-
-    const sidebarItems = sidebarList.querySelectorAll('li');
-    sidebarItems.forEach((item, i) => {
-        item.classList.toggle('active', i === index);
-    });
-} */

@@ -1,6 +1,8 @@
 // events.js
 import { loadLanguage } from './language.js';
 import { navigateSlides, handleSectionChange } from './slides.js';
+import { setCurrentSection, setCurrentIndex } from './state.js';
+import { showSlide } from './slides.js';
 
 export function setupEventListeners() {
     
@@ -59,7 +61,12 @@ export function setupEventListeners() {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const section = e.target.getAttribute('href').substring(1);
+
+            // Reset to first slide of new section
+            setCurrentSection(section);
+            setCurrentIndex(0);
             handleSectionChange(section);
+            showSlide(0, section);
         });
     });
 

@@ -185,51 +185,21 @@ body, html {
 
 .sidebar ul {
     list-style: none;
-    margin: 0 auto; /* Center the ul horizontally */
-    width: 70%;
 }
 
 .sidebar ul li {
     padding: 10px;
     cursor: pointer;
-    transition: all 0.3s;
-    font-family: var(--third-font);
-    font-size: 150%;
-    color:gray;
-    border-radius: 20px;
-    text-align: left; /* Keep text left-aligned within the li */
-
-    filter: drop-shadow(0 0 3px rgb(0, 0, 0));
+    transition: background-color 0.3s; /* Smooth transition for background color */
 }
 
 .sidebar ul li:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
+    background-color: #555; /* Change color on hover */
 }
 
 .sidebar ul li.active {
+    background-color: #444; /* Active item background color */
     color: var(--text-color); /* Ensure text color stands out */
-    padding-left: 20px;
-    font-weight: bold;
-}
-
-.sidebar-shadow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        95deg,
-        rgb(0, 0, 0) 10%,
-        rgba(0, 0, 0, 0.505) 40%,
-        rgba(255, 255, 255, 0) 70%
-    ),
-    linear-gradient(
-        85deg,
-        rgb(0, 0, 0) 10%,
-        rgba(0, 0, 0, 0.60) 40%,
-        rgba(255, 255, 255, 0) 70%
-    );
 }
 
 .slides {
@@ -246,15 +216,18 @@ body, html {
     height: 100%;
     top: 0;
     left: 0;
-    transition: transform 1s ease-in-out;
-
-    z-index: 1; /* Base z-index */
-    pointer-events: none; /* Disable interactions by default */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .section.active {
-    z-index: 2; /* Higher z-index when active */
-    pointer-events: auto; /* Enable interactions when active */
+    opacity: 1;
+    visibility: visible;
+}
+
+.section:not(.active){
+    opacity: 0;
 }
 
 .section .about,

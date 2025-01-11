@@ -21,6 +21,10 @@
     transform: translateY(0);
 }
 
+.about.education {
+    transform: translateY(100%);
+}
+
 .intro-shadow {
     position: absolute;
     width: 100%;

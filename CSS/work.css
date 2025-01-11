@@ -24,7 +24,7 @@
     height: 100%;
     width: 100%;
     
-    transform: translateY(0);
+    transform: translateY(100%);
 }
 
 .wrapper {
@@ -168,7 +168,7 @@
     overflow-wrap: break-word;
 }
 
-.job-section:hover {
+.job-section:hover{
     max-height: 1000px;
     z-index: 10;
 }
