@@ -1,5 +1,4 @@
 // slides.js
-// TODO: Put everything on the same page
 
 import { currentSection, currentIndex, setCurrentIndex, setCurrentSection, getTotalSlides, getGlobalIndex, getSectionFromGlobal } from './state.js';
 import { updateSidebar } from './sidebar.js';

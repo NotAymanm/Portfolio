@@ -1,4 +1,9 @@
 /* main.css */
+@import url("fonts.css");
+@import url("about.css");
+@import url("projects.css");
+@import url("work.css");
+
 :root {
     --primary-color: #836FFF;
     --secondary-color: #E1AA74;

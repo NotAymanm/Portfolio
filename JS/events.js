@@ -1,74 +1,18 @@
 // events.js
-import { loadLanguage } from './language.js';
-import { navigateSlides, handleSectionChange } from './slides.js';
-import { setCurrentSection, setCurrentIndex } from './state.js';
-import { showSlide } from './slides.js';
+import { loadLanguage, translationClick } from './language.js';
+import { navigateSlides, handleSectionChange, showSlide } from './slides.js';
+import { loadingScreen } from './loadingScreen.js';
+import { navbarItemClick, navbarSizeAdjust } from './navbar.js';
 
-export function setupEventListeners() {
+export function setupEventListeners() {   
     
-    window.addEventListener('load', () => {
-        const progressBar = document.querySelector('.progress');
-        const loadingScreen = document.getElementById('loading-screen');
-        const images = document.images; // Get all images on the page
-        const totalAssets = images.length;
-        let loadedAssets = 0;
-    
-        if (totalAssets === 0) {
-            // If there are no images, directly complete the loading screen
-            progressBar.style.width = '100%';
-            setTimeout(() => {
-                loadingScreen.style.opacity = '0';
-                setTimeout(() => loadingScreen.style.display = 'none', 1000); //remove after fade
-            }, 500); //Delay hiding the loading screen by 0.5 seconds
-            return;
-        }
-    
-        // Track image load events
-        for (let i = 0; i < totalAssets; i++) {
-            const img = images[i];
-            img.onload = img.onerror = () => {
-                loadedAssets++;
-                const progress = (loadedAssets / totalAssets) * 100;
-                progressBar.style.width = progress + '%';
-    
-                if (progress >= 100) {
-                    setTimeout(() => {
-                        loadingScreen.style.opacity = '0';
-                        setTimeout(() => loadingScreen.style.display = 'none', 1000); //remove after fade
-                    }, 500); // Delay hiding the loading screen by 0.5 seconds
-                }
-            };
-        }
-    });
-    
+    loadingScreen();
 
-    const languageSelector = document.getElementById('language-selector');
-    const en = document.getElementById('en');
-    const fr = document.getElementById('fr');
+    translationClick();
 
-    languageSelector.addEventListener('click', (e) => {
-        if (e.target.id === 'en' || e.target.id === 'fr') {
-            if (e.target.classList.contains('selected')) return;
+    navbarItemClick();
 
-            en.classList.toggle('selected');
-            fr.classList.toggle('selected');
-
-            loadLanguage(e.target.id);
-        }
-    });
-
-    document.querySelectorAll('.navbar .nav-left li a').forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const section = e.target.getAttribute('href').substring(1);
-
-            // Reset to first slide of new section
-            setCurrentSection(section);
-            setCurrentIndex(0);
-            handleSectionChange(section);
-            showSlide(0, section);
-        });
-    });
+    navbarSizeAdjust();
 
     
     let scrollLocked = false;
@@ -82,40 +26,14 @@ export function setupEventListeners() {
             navigateSlides(direction);
 
             // Lock further scrolling for 1 second
+            const maxAnimationDuration = 1000;
             scrollLocked = true;
             setTimeout(() => {
                 scrollLocked = false;
-            }, 1000);
+            }, maxAnimationDuration);
         }
     });
 
-    
-    //adjust width of navbar
-    //keeps the navigation bar at the top of the tab
-    function adjustNavbar() {
-        const navbarHeight = 146.53;
-        const navbarWidth = 1522.66;
-        const offset =  400;
-        const navbarGivenHeight = 130;
-        const multiplier = navbarWidth / navbarHeight;
-        const baseWidth = navbarGivenHeight * multiplier; // Calculate base width
-        const windowWidth = window.innerWidth;
-        
-        const targetElement = document.querySelector('.navbar ul');
-        if (windowWidth <= baseWidth) {
-            let adjustedOffset = windowWidth * (offset / baseWidth);
-            let adjustedWidth = windowWidth - adjustedOffset;
-            targetElement.style.width = `${adjustedWidth}px`;
-
-            let adjustedHeight = windowWidth / multiplier;
-            targetElement.style.height = `${adjustedHeight}px`;
-        } else {
-            targetElement.style.width = ''; // Reset to default width if needed
-            targetElement.style.height = ''; // Reset to default height if needed
-        }
-    }
-    window.addEventListener('resize', adjustNavbar);
-    adjustNavbar();
 
     // Add event listeners to the job sections
     document.querySelectorAll('.job-section').forEach((section) => {

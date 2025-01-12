@@ -24,3 +24,20 @@ export async function loadLanguage(lang) {
 
     updateSidebar(currentSection, currentIndex);
 }
+
+export function translationClick() {
+    const languageSelector = document.getElementById('language-selector');
+    const en = document.getElementById('en');
+    const fr = document.getElementById('fr');
+
+    languageSelector.addEventListener('click', (e) => {
+        if (e.target.id === 'en' || e.target.id === 'fr') {
+            if (e.target.classList.contains('selected')) return;
+
+            en.classList.toggle('selected');
+            fr.classList.toggle('selected');
+
+            loadLanguage(e.target.id);
+        }
+    });
+}
