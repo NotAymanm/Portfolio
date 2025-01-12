@@ -52,23 +52,23 @@ export function setupEventListeners() {
 
 
     // Add event listeners for video items
-    const video = document.getElementById("video");
-    const toggleSoundButton = document.getElementById("toggleSound");
-    const playPauseButton = document.getElementById("playPause");
+    // const video = document.getElementById("video");
+    // const toggleSoundButton = document.getElementById("toggleSound");
+    // const playPauseButton = document.getElementById("playPause");
 
-    toggleSoundButton.addEventListener("click", () => {
-        video.muted = !video.muted;
-        toggleSoundButton.textContent = video.muted ? "Unmute" : "Mute";
-    });
-    playPauseButton.addEventListener("click", () => {
-    if (video.paused || video.ended) {
-        video.play();
-        playPauseButton.textContent = "Pause";
-    } else {
-        video.pause();
-        playPauseButton.textContent = "Play";
-    }
-    });
+    // toggleSoundButton.addEventListener("click", () => {
+    //     video.muted = !video.muted;
+    //     toggleSoundButton.textContent = video.muted ? "Unmute" : "Mute";
+    // });
+    // playPauseButton.addEventListener("click", () => {
+    // if (video.paused || video.ended) {
+    //     video.play();
+    //     playPauseButton.textContent = "Pause";
+    // } else {
+    //     video.pause();
+    //     playPauseButton.textContent = "Play";
+    // }
+    // });
 
 
 }
