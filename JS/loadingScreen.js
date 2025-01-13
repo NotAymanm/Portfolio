@@ -18,7 +18,11 @@ export function loadingScreen(){
     
     const images = [...new Set(imagesSrc.map(img => img.src))];
     const videos = [...new Set(videosSrc.map(video => video.currentSrc))];
-    const totalAssets = images.length + videos.length;
+    
+    // Get all elements with background-image CSS property
+    const cssBackgroundImages = getCSSBackgroundImages();
+    
+    const totalAssets = images.length + videos.length + cssBackgroundImages.length;
     let loadedAssets = 0;
 
     // Debug info
@@ -26,6 +30,7 @@ export function loadingScreen(){
     console.log(videos);
     console.log('Total images:', images.length);
     console.log('Total videos:', videos.length);
+    console.log('Total background images:', cssBackgroundImages.length);
 
     function updateProgress(assetType, assetSrc){
         loadedAssets++;
@@ -72,6 +77,14 @@ export function loadingScreen(){
             video.dispatchEvent(new Event('loadeddata'));
         }
     });
+
+    // Add load event listeners for background images
+    cssBackgroundImages.forEach(src => {
+        const img = new Image();
+        img.src = src;-
+        img.addEventListener('load', () => updateProgress('background image', src));
+        img.addEventListener('error', () => updateProgress('background image', src));
+    });
 }
 
 export function loadingScreenAnimation(loadingScreen) {
@@ -89,9 +102,34 @@ export function loadingScreenAnimation(loadingScreen) {
 
     function handleSVGLoad() {
         svgObject.classList.add('fade-in');
-        
-        setTimeout(() => {
-            loadingText.classList.add('fade-in');
-        }, 300);
+
+        document.fonts.load(`1em "Bumbu"`).then(() => {
+            setTimeout(() => {
+                loadingText.classList.add('fade-in');
+            }, 300);
+        }).catch(() => {
+            console.error(`Failed to load font: ${specificFont}`);
+        });
     }
+}
+
+// Function to extract all background images from CSS
+function getCSSBackgroundImages() {
+    const backgrounds = [];
+    const elementsWithBg = [...document.querySelectorAll('*')];
+
+    elementsWithBg.forEach(element => {
+        const style = window.getComputedStyle(element);
+        const backgroundImage = style.backgroundImage;
+
+        // Check if the background image URL is defined
+        if (backgroundImage && backgroundImage !== 'none') {
+            const urlMatch = backgroundImage.match(/url\(["']?(.*?)["']?\)/);
+            if (urlMatch && urlMatch[1]) {
+                backgrounds.push(urlMatch[1]);
+            }
+        }
+    });
+
+    return backgrounds;
 }
