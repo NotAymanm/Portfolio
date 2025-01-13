@@ -8,14 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-translate="title">Ayman's Portfolio</title>
     <link rel="icon" type="image/x-icon" href="/Images/favicon.ico">
+    <!-- Preload SVG -->
+    <link rel="preload" href="/SVG/logo.svg" as="image">
     <link rel="stylesheet" href="/CSS/main.css">
 </head>
 
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen">
-        <div class="progress-bar">
-            <div class="progress"></div>
+        <div class="loading-screen-container">
+            <img src="/SVG/logo.svg" alt="Ayman Madani" class="loading-svg">
+            <div class="introText loading-text">Code. Create. Innovate.</div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
         </div>
     </div>
     <div class="main">
@@ -31,7 +37,7 @@
 
                 <!-- Center Section -->
                 <div class="nav-center">
-                    <object class="svg-nav" data="/SVG/logo.svg" type="image/svg+xml"></object>
+                    <img src="/SVG/logo.svg" alt="Ayman Madani" class="svg-nav">
                 </div>
 
                 <!-- Right Section -->
@@ -50,8 +56,8 @@
 
         <!-- <div class="get-in-touch-name">AYMAN MADANI</div>
         <div class="get-in-touch-info">
-            <object class="small-icons" data="/SVG/email-icon.svg" type="image/svg+xml"></object>
-            <object class="small-icons" data="/SVG/resume-icon.svg" type="image/svg+xml"></object>
+            <object class="icons" data="/SVG/email-icon.svg" type="image/svg+xml"></object>
+            <object class="icons" data="/SVG/resume-icon.svg" type="image/svg+xml"></object>
         </div> -->
 
         <div class="mainSlide">
@@ -82,9 +88,8 @@
                                 I develop and style&nbsp;
                                 <span id="dynamic-text">everything.</span>
                             </div>
-                            <object class="svg-logo" data="/SVG/logo.svg" type="image/svg+xml" data-delay="0.1"
-                                data-translate-y="100" data-translate-x="-50" data-origin-x="-50"
-                                data-origin-y="-50"></object>
+                            <img src="/SVG/logo.svg" alt="Ayman Madani" class="svg-logo"  data-delay="0.1"
+                            data-translate-y="100" data-translate-x="-50" data-origin-x="-50" data-origin-y="-50">
                         </div>
                     </section>
                     <section class="about education">
@@ -96,9 +101,9 @@
                             <div class="education-main">
                                 <h1 class="education-title" data-delay="0.1" data-translate-y="700">
                                     Carleton University
-                                </h1>
-                                <object class="svg-carleton" data="/SVG/carleton-logo.svg" type="image/svg+xml"
-                                    data-delay="0.1" data-translate-y="50"></object>
+                                </h1>             
+                                <img src="/SVG/carleton-logo.svg" alt="Carleton University" class="svg-carleton"
+                                data-delay="0.1" data-translate-y="50">
                                 <h2 class="education-degree" data-delay="0.1" data-translate-y="300">
                                     Bachelor of<br>
                                     Computer Science Honours
@@ -128,8 +133,8 @@
                             <div class="job-period">Mar. 2024 - Jun. 2024</div>
     
                             <div class="microGPT-container">
-                                <object class="svg-microGPT" data="/Images/Work/MicroGPT-Logo.svg" type="image/svg+xml"
-                                    data-delay="0.1" data-translate-y="50"></object>
+                                <img src="/Images/Work/MicroGPT-Logo.svg" alt="MicroGPT" class="svg-microGPT"
+                                data-delay="0.1" data-translate-y="50">
                                 <h1 class="microGPT-title" data-delay="0.1" data-translate-y="100">MicroGPT</h1>
                             </div>
     
@@ -145,7 +150,7 @@
                                                 GitHub for version control. Designed and produced a professional video demo with
                                                 Adobe After Effects and Photoshop, highlighting the app's functionality and appeal.</p>
                                         </div>
-                                        <object class="svg-drop-down" data="/SVG/down-arrow.svg" type="image/svg+xml"></object>
+                                        <img src="/SVG/down-arrow.svg" alt="↓" class="svg-drop-down">
                                     </div>
                                 </div>
                                 <div data-delay="0.1" data-translate-y="200">
@@ -162,7 +167,7 @@
                                                     of code, analyze the selected portion, and extract text using Google Cloud Vision API.</li>
                                             </ul>
                                         </div>
-                                        <object class="svg-drop-down" data="/SVG/down-arrow.svg" type="image/svg+xml"></object>
+                                        <img src="/SVG/down-arrow.svg" alt="↓" class="svg-drop-down">
                                     </div>
                                 </div>
                                 <div data-delay="0.2" data-translate-y="200">
@@ -195,7 +200,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <object class="svg-drop-down" data="/SVG/down-arrow.svg" type="image/svg+xml"></object>
+                                        <img src="/SVG/down-arrow.svg" alt="↓" class="svg-drop-down">
                                     </div>
                                 </div>
                                 <div data-delay="0.3" data-translate-y="200">

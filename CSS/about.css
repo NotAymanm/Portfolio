@@ -44,6 +44,7 @@
     font-family: var(--primary-font);
     letter-spacing: 0.3rem;
     justify-content: center;
+    color: var(--text-color);
 }
 
 .introName {

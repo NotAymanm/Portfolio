@@ -3,6 +3,11 @@
 @import url("about.css");
 @import url("projects.css");
 @import url("work.css");
+@import url("navbar.css");
+@import url("loadingScreen.css");
+@import url("fullscreen.css");
+@import url("sidebar.css");
+
 
 :root {
     --primary-color: #836FFF;
@@ -10,8 +15,9 @@
     --accent-color: #F3F0CA;
     --background-color: #211951;
     --background-dark: #110d2a;
+    --background-black: #050507;
     --text-color: #ffffff;
-    
+
     --primary-font: 'Bumbu';
     --secondary-font: 'Futura';
     --third-font: 'Seibi';
@@ -30,45 +36,11 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     /* background-color: #000000; */
 }
 
-/* Fullscreen loading screen */
-#loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 1; /* Fully visible initially */
-    transition: opacity 1s ease-in-out; /* Smooth fade-out over 1 second */
-  }
-  
-  /* Progress bar container */
-  .progress-bar {
-    width: 70%;
-    height: 10px;
-    background-color: #e0e0e0; /* Light gray background */
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Progress bar itself */
-  .progress {
-    width: 0;
-    height: 100%;
-    background-color: #3498db; /* Blue color for progress */
-    transition: width 0.2s ease-in-out;
-  }
-  
-  #fps-counter {
+#fps-counter {
     position: fixed;
     top: 10px;
     left: 10px;
@@ -79,8 +51,8 @@ body, html {
     padding: 5px 10px;
     border-radius: 5px;
     z-index: 1000;
-  }
-  
+}
+
 
 .main {
     display: flex;
@@ -90,151 +62,11 @@ body, html {
 }
 
 
-.navbar ul li a {
-    color: gray;
-    transition: color 0.3s ease;
-
-    font-size: clamp(0.7rem, 2vw, 1.6rem);
-    text-decoration: none;
-    font-family: var(--secondary-font);
-    font-weight: 200;
-}
-
-/* Hover effect */
-.navbar ul li a:hover {
-    color: var(--secondary-color);
-}
-
-.navbar ul li a.active {
-    color: var(--text-color); /* Color for the active (selected) link */
-    font-weight: 300;
-}
-
-.navbar li{
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-}
-
-.navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 100%;
-    background-image: url('/SVG/TopBarV2.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.navbar ul {
-    width: calc((130px * 10.3914) - 400px);
-    height: 130px;
-    display: flex;
-    
-    /* Evenly distribute left, center, and right */
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-left,
-.nav-right {
-    display: flex;
-    gap: clamp(0.2rem, 1.2vw, 1rem);
-    padding-bottom: clamp(1rem, 2.3vw, 2.3rem);
-}
-
-.nav-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    padding-bottom: clamp(0rem, 2vw, 0.5rem);
-}
-.nav-left li,
-.nav-right li,
-.nav-center object {
-    display: flex;
-    align-items: center;
-}
-
-.svg-nav{
-    width: clamp(1rem, 4.5vw, 4.5rem);
-}
-
 .mainSlide {
     display: flex;
     width: 100%;
     height: 100%;
     position: relative;
-}
-
-.sidebar {
-    width: 15%;
-    height: 100%; /* Sidebar fills viewport height */
-    /* background-color: #333; */
-    color: var(--text-color);
-    padding: 20px;
-    position: absolute; /* Overlay on top of slides */
-    top: 0;
-    left: 0;
-    z-index: 9; /* Ensure sidebar is above slides */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.sidebar ul {
-    list-style: none;
-    margin: 0 auto; /* Center the ul horizontally */
-    width: 70%;
-}
-
-.sidebar ul li {
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: var(--third-font);
-    font-size: 150%;
-    color:gray;
-    border-radius: 20px;
-    text-align: left; /* Keep text left-aligned within the li */
-
-    filter: drop-shadow(0 0 3px rgb(0, 0, 0));
-}
-
-.sidebar ul li:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
-}
-
-.sidebar ul li.active {
-    color: var(--text-color); /* Ensure text color stands out */
-    padding-left: 20px;
-    font-weight: bold;
-}
-
-.sidebar-shadow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        95deg,
-        rgb(0, 0, 0) 10%,
-        rgba(0, 0, 0, 0.505) 40%,
-        rgba(255, 255, 255, 0) 70%
-    ),
-    linear-gradient(
-        85deg,
-        rgb(0, 0, 0) 10%,
-        rgba(0, 0, 0, 0.60) 40%,
-        rgba(255, 255, 255, 0) 70%
-    );
 }
 
 .slides {
@@ -281,22 +113,6 @@ body, html {
 }
 
 
-.language span {
-    color: gray;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.language span:hover {
-    color: var(--secondary-color);
-}
-
-.language .selected {
-    color: var(--text-color);
-    font-weight: bold;
-}
-
-
 .vignette {
     position: fixed;
     top: 0;
@@ -330,89 +146,6 @@ body, html {
 
     font-family: var(--third-font);
     font-size: larger;
-}
-
-.small-icons{
-    width: clamp(1.5rem, 1.5vw, 4rem);
-    filter: invert();
-}
-
-
-.video-container {
-    position: relative;
-    display: inline-block;
-}
-
-.image-container {
-    position: relative;
-    display: inline-block;
-}
-
-.fullscreen-icon {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-
-    width: 35px;
-    height: 35px;
-
-    transition: transform 0.2s ease;
-
-    /* Apply drop shadow to the SVG icon */
-    filter: drop-shadow(0px 0px 5px rgb(0, 0, 0));
-}
-
-.fullscreen-icon:hover {
-    transform: scale(1.2);
-}
-
-/* Fullscreen Modal */
-.fullscreen-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-}
-
-.fullscreen-content {
-    max-width: 50%;
-    max-height: 100%;
-    object-fit: contain;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.fullscreen-content img,
-.fullscreen-content video {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 40px;
-}
-
-.fullscreen-content .close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    border-radius: 100%;
-    color: black;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 1001; /* Ensure it is above the image */
 }
 
 video {

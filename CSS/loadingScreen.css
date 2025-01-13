@@ -1,0 +1,80 @@
+/* Fullscreen loading screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    /* Fully visible initially */
+    transition: opacity 1s ease-in-out;
+    /* Smooth fade-out over 1 second */
+}
+
+.loading-screen-container {
+    display: flex;
+    width: 100%;
+    height: 45%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.loading-svg {
+    width: clamp(0.7rem, 12vw, 20rem);
+    margin-bottom: 30px;
+    opacity: 0;
+    /* animation: fadeIn 1s ease-out 0.3s forwards; */
+}
+
+.loading-text {
+    opacity: 0;
+    /* animation: fadeIn 1s ease-out 0.8s forwards; */
+}
+
+/* Add animation classes */
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+
+/* Progress bar container */
+.progress-bar {
+    margin-top: auto;
+    width: 70%;
+    height: 30px;
+    background-color: var(--accent-color);
+    /* progress background */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Progress bar itself */
+.progress {
+    width: 0;
+    height: 100%;
+    background-color: var(--primary-color);
+    /* color for progress */
+    transition: width 0.2s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

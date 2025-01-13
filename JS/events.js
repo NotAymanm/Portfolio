@@ -1,11 +1,10 @@
 // events.js
 import { loadLanguage, translationClick } from './language.js';
-import { navigateSlides, handleSectionChange, showSlide } from './slides.js';
+import { navigateSlides } from './slides.js';
 import { loadingScreen } from './loadingScreen.js';
 import { navbarItemClick, navbarSizeAdjust } from './navbar.js';
 
-export function setupEventListeners() {   
-    
+export function setupEventListeners() {
     loadingScreen();
 
     translationClick();

@@ -8,11 +8,11 @@ import { countFps } from './fpsCounter.js';
 import { dynamicText } from './dynamicText.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    setupEventListeners(); // Set up event listeners for navigation
     loadLanguage('en'); // Load default language
     updateSidebar(); // Set the sidebar for the default section
     showSlide(currentIndex, currentSection); // Show the first slide of the default section
     handleSectionChange(currentSection); // Set default active state in navbar
-    setupEventListeners(); // Set up event listeners for navigation
     countFps();
     dynamicText();
 });
