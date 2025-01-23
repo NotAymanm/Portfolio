@@ -15,21 +15,42 @@ export function setupEventListeners() {
 
     
     let scrollLocked = false;
-    window.addEventListener('wheel', (e) => {
-        e.preventDefault();
-
-        // Check if scrolling is locked
+    let startY = 0; // To store the starting Y position of a touch
+    
+    // Function to handle slide navigation
+    function handleScroll(direction) {
         if (!scrollLocked) {
-            // Determine the direction and execute navigateSlides instantly
-            const direction = e.deltaY > 0 ? 'down' : 'up';
             navigateSlides(direction);
-
+    
             // Lock further scrolling for 1 second
             const maxAnimationDuration = 1000;
             scrollLocked = true;
             setTimeout(() => {
                 scrollLocked = false;
             }, maxAnimationDuration);
+        }
+    }
+    
+    // Desktop scrolling with mouse wheel
+    window.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const direction = e.deltaY > 0 ? 'down' : 'up';
+        handleScroll(direction);
+    });
+    
+    // Touch scrolling for phones
+    window.addEventListener('touchstart', (e) => {
+        startY = e.touches[0].clientY; // Record the initial touch position
+    });
+    
+    window.addEventListener('touchmove', (e) => {
+        if (scrollLocked) return; // Stop if scrolling is locked
+        const endY = e.touches[0].clientY;
+        const deltaY = endY - startY;
+    
+        if (Math.abs(deltaY) > 50) { // Adjust the threshold for sensitivity
+            const direction = deltaY < 0 ? 'down' : 'up';
+            handleScroll(direction);
         }
     });
 
