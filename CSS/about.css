@@ -228,4 +228,76 @@
     font-family: var(--secondary-font);
     font-weight: 100;
 }
-  
+
+
+
+
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+
+    .about.intro, 
+    .about.education {
+        background-size: cover;
+        padding: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .introText {
+        font-size: 1.5rem;
+        flex-direction: column;
+    }
+
+    .introName {
+        font-size: 4rem;
+        margin-top: 10px;
+    }
+
+    .introDescription {
+        font-size: 1rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .svg-logo {
+        width: 50%;
+    }
+    
+    .education-main {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+    }
+
+    .education-main-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .education-title {
+        font-size: 2rem;
+    }
+
+    .education-degree {
+        font-size: 1.5rem;
+    }
+
+    .education-filler {
+        display: none;
+    }
+
+    .education-courses {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .education-courses h3 {
+        font-size: 1.2rem;
+    }
+
+    .education-courses p {
+        font-size: 0.9rem;
+    }
+}

@@ -41,6 +41,13 @@ export function navbarSizeAdjust(){
             targetElement.style.width = ''; // Reset to default width if needed
             targetElement.style.height = ''; // Reset to default height if needed
         }
+
+
+        document.querySelectorAll('.job-section').forEach((section) => {
+            const isMobile = window.innerWidth <= 768;
+            section.style.maxHeight = isMobile ? '100px' : '190px';
+        });
+
     }
     window.addEventListener('resize', adjustNavbar);
     adjustNavbar();

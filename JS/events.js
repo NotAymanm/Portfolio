@@ -66,7 +66,8 @@ export function setupEventListeners() {
     
         section.addEventListener('mouseleave', () => {
             // Collapse back to the original height
-            section.style.maxHeight = '190px';
+            const isMobile = window.innerWidth <= 768;
+            section.style.maxHeight = isMobile ? '100px' : '190px';
         });
     });
 

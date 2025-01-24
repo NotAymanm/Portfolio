@@ -104,7 +104,7 @@
     
     font-family: var(--secondary-font);
     font-weight: 200;
-    font-size: clamp(0.7rem, 1.3vw, 2rem);
+    font-size: clamp(1.3rem, 1.3vw, 2rem);
 
     display: inline-block; /* This ensures the background wraps the text */
     width: auto; /* Makes the width auto so it wraps only the content */
@@ -117,7 +117,7 @@
     justify-self: end;
     align-self: center;
 
-    font-size: clamp(0.7rem, 1.2vw, 2rem);
+    font-size: clamp(1.2rem, 1.2vw, 2rem);
     font-family: var(--primary-font);
     font-weight: 300;
 }
@@ -133,7 +133,7 @@
 }
 
 .microGPT-title {
-    font-size: clamp(0.7rem, 3vw, 30rem);
+    font-size: clamp(2rem, 3vw, 30rem);
     font-family: var(--secondary-font);
     text-align: center;
 }
@@ -201,7 +201,7 @@
 
 
 .job-section {
-    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-size: clamp(0.9rem, 1vw, 1rem);
     font-family: var(--secondary-font);
     font-weight: 200;
     
@@ -209,7 +209,7 @@
 }
 
 .job-section h3 {
-    font-size: clamp(0.7rem, 1.3vw, 1.5rem);
+    font-size: clamp(1rem, 1.3vw, 1.5rem);
     font-family: var(--secondary-font);
     color: var(--text-color);
     margin-bottom: 7px;
@@ -252,4 +252,66 @@
     color: #ffffff; */
 
     transform: translateY(100%);
+}
+
+
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .wrapper {
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .job-section{
+        max-height: 100px;
+    }
+
+    .microGPT-title {
+        font-size: clamp(2rem, 3vw, 30rem);
+    }
+
+    .microGPT-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        order: -1;
+    }
+
+    .svg-microGPT {
+        width: clamp(3rem, 4vw, 5rem); /* Scale icon size */
+    }
+
+    .job-descriptions {
+        grid-template-columns: 1fr; /* Reduce to 1 columns for mobile */
+        gap: 10px;
+    }
+
+    .work-icons {
+        justify-content: center; /* Center icons */
+        gap: 5px; /* Tighten space */
+    }
+
+    .svg-drop-down {
+        width: clamp(1rem, 1.2vw, 1.5rem); /* Scale down */
+        bottom: 5px; /* Adjust placement */
+    }
+
+    .glass {
+        padding: 10px 15px;
+        border-radius: 10px; /* Reduce border radius */
+    }
+
+    .additional-content ul {
+        padding-left: 15px; /* Reduce list indentation */
+    }
+
+    .additional-content li {
+        margin-bottom: 3px; /* Tighten space between items */
+    }
 }

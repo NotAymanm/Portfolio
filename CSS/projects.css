@@ -1,4 +1,11 @@
 /* project.css */
+.projects-container {
+    overflow-x: auto; /* Enable horizontal scrolling for the container */
+    -webkit-overflow-scrolling: touch; /* Improve scrolling on iOS */
+    scroll-behavior: smooth; /* Smooth scroll behavior */
+    box-sizing: border-box;
+}
+
 .projects-grid {
     width: 70%;
     display: flex;
@@ -6,11 +13,11 @@
     gap: 10px;
     margin: 0 auto;
     padding: 16px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
+    box-sizing: border-box;
 }
 
 .project-item {
+    flex: 0 0 auto; /* Prevent items from shrinking */
     width: 25%;
     min-width: 300px; /* Minimum width to prevent too narrow items */
     height: fit-content; /* Allow height to fit content */
@@ -106,6 +113,10 @@
     linear-gradient(336deg, rgba(7, 13, 56, 0.874), rgba(0, 0, 0, 0.851) 70%);
     
     transform: translateY(100%);
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .projects.pro2 {
@@ -124,4 +135,36 @@
     color: #ffffff; */
 
     transform: translateY(100%);
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    /* Container for all projects */
+    .projects-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding: 1rem;
+        width: 100%;
+    }
+
+    /* Individual project cards */
+    .project-item {
+        min-width: 85vw; /* Slightly smaller than viewport to show next card */
+        scroll-snap-align: center;
+        margin-right: 1rem;
+        flex-shrink: 0; /* Prevent projects from shrinking */
+    }
+
+    /* Hide scrollbar but keep functionality */
+    .projects-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .projects-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
